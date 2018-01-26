@@ -1,12 +1,16 @@
 version: "3"
 services:
 
-  nginx:
-    image: custom-nginx
+  proxy:
+    build: ./nginx
+    image: proxy
     ports:
       - "80:80"
     
-  ghost:
-    image: ghost
+  blog:
+    build: ./ghost
+    environment:
+      NODE_ENV: development
+    image: blog
     ports:
       - "2368:2368"
